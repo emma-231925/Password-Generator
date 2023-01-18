@@ -113,6 +113,14 @@ function getPasswordOptions() {
   wantLowerCase = confirm("Do you want lowercase characters?");
   wantNumerics = confirm("Do you want numerical characters?");
   wantSpecialCharacters = confirm("Do you want special characters?");
+  //if no options are chosen, ask again until at least one is true
+  while (wantUpperCase === false && wantLowerCase === false && wantNumerics === false && wantSpecialCharacters === false){
+    alert("Please chose at least one type of character for your password");
+    wantUpperCase = confirm("Do you want uppercase characters?");
+    wantLowerCase = confirm("Do you want lowercase characters?");
+    wantNumerics = confirm("Do you want numerical characters?");
+    wantSpecialCharacters = confirm("Do you want special characters?");
+  }
 }
 
 getPasswordOptions();
