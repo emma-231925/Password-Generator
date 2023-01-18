@@ -88,19 +88,71 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//define variables to store user inputs
+let passwordLength;
+let wantUpperCase;
+let wantLowerCase;
+let wantNumerics;
+let wantSpecialCharacters;
+
+//define empty array which will contain characters based on user inputs
+let chooseCharacters = [];
+let passwordFinal = "";
+
 // Function to prompt user for password options
 function getPasswordOptions() {
+  passwordLength = prompt("Choose a password length between 10 and 64 characters.");
+  // if (passwordLength <= 10) {
+  //   alert("Please chose a number between 10 and 64.");
+  //   passwordLength = prompt("Choose a password length between 10 and 64 characters.");
+  // } else if (passwordLength >= 64) {
+  //   alert("Please chose a number between 10 and 64.");
+  //   passwordLength = prompt("Choose a password length between 10 and 64 characters.");
+  // } else {
 
+  // }
+  wantUpperCase = confirm("Do you want uppercase characters?");
+  wantLowerCase = confirm("Do you want lowercase characters?");
+  wantNumerics = confirm("Do you want numerical characters?");
+  wantSpecialCharacters = confirm("Do you want special characters?");
 }
+
+getPasswordOptions();
+
+//function creates an array of characters based on user inputs
+function makeCharacterArray() {
+  if (wantUpperCase === true) {
+    chooseCharacters = chooseCharacters.concat(upperCasedCharacters);
+  }
+  if (wantLowerCase === true) {
+    chooseCharacters = chooseCharacters.concat(lowerCasedCharacters);
+  }
+  if (wantNumerics === true) {
+    chooseCharacters = chooseCharacters.concat(numericCharacters);
+  }
+  if (wantSpecialCharacters === true) {
+    chooseCharacters = chooseCharacters.concat(specialCharacters);
+  }
+  return chooseCharacters;
+}
+
+makeCharacterArray();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  for (let i = 0; i < passwordLength; i++) {
+    var randomNumber = Math.floor(Math.random() * chooseCharacters.length); //chooses a random number between zero and length of chooseCharacters array
+    passwordFinal += chooseCharacters[randomNumber]; //adds random element of chooseCharacters to passwordFinal (empty string)
+  }
+  return passwordFinal;
 }
 
-// Function to generate password with user input
-function generatePassword() {
+getRandom();
 
+// Function to generate password with user input
+// This generates the password and displays it when button clicked
+function generatePassword() {
+  return passwordFinal;
 }
 
 // Get references to the #generate element
