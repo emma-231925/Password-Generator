@@ -97,20 +97,18 @@ let wantSpecialCharacters;
 
 //define empty array which will contain characters based on user inputs
 let chooseCharacters = [];
+
+//define empty string for random characters to be added to
 let passwordFinal = "";
 
 // Function to prompt user for password options
 function getPasswordOptions() {
   passwordLength = prompt("Choose a password length between 10 and 64 characters.");
-  // if (passwordLength <= 10) {
-  //   alert("Please chose a number between 10 and 64.");
-  //   passwordLength = prompt("Choose a password length between 10 and 64 characters.");
-  // } else if (passwordLength >= 64) {
-  //   alert("Please chose a number between 10 and 64.");
-  //   passwordLength = prompt("Choose a password length between 10 and 64 characters.");
-  // } else {
-
-  // }
+  //conditions for password to be between 10 and 64 characters
+  while (passwordLength < 10 || passwordLength > 64) {
+    alert("Please chose a number between 10 and 64.");
+    passwordLength = prompt("Choose a password length between 10 and 64 characters.");
+  } 
   wantUpperCase = confirm("Do you want uppercase characters?");
   wantLowerCase = confirm("Do you want lowercase characters?");
   wantNumerics = confirm("Do you want numerical characters?");
